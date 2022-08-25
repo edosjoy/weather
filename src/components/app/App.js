@@ -1,8 +1,14 @@
 import './app.scss';
 
+import CitySearch from "../citySearch/CitySearch";
+import CityWeather from "../cityWeather/CityWeather";
+
 export default function App() {
 	return (
-		<div className='main__container'>Weather</div>
+		<>
+			{/*<CitySearch />*/}
+			<CityWeather />
+		</>
 	)
 }
 

@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import './cityWeather.scss';
 
 import weatherSunnyImage from '../../resources/images/sunny.svg';
@@ -11,6 +13,20 @@ import humidityIcon from '../../resources/icons/humidity.svg';
 import arrayIcon from '../../resources/icons/arrow.svg';
 
 const CityWeather = ({weather, resetPage}) => {
+	useEffect(() => {
+		window.addEventListener('keydown', backMainPage);
+
+		return () => {
+			window.removeEventListener('keydown', backMainPage);
+		}
+	});
+
+	const backMainPage = (event) => {
+		if (event.key === 'Backspace') {
+			resetPage();
+		}
+	}
+
 	const {name, image, description, temperature, feelsLikeTemperature, humidity} = weather;
 
 	let currentImage

@@ -16,14 +16,16 @@ const WeatherService = () => {
 		return data.coord;
 	}
 
-	const getWeather = async (city) => {
+	const getWeatherCity = async (city) => {
 		const coordinates = await getCoordinates(city);
 		return await request(`${_baseUrl}&lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${_apiKey}`);
-		// console.log(data);
-		// return data;
 	}
 
-	return {getWeather};
+	const getWeatherCoord = async (lat, lon) => {
+		return await request(`${_baseUrl}&lat=${lat}&lon=${lon}&appid=${_apiKey}`);
+	}
+
+	return {getWeatherCity, getWeatherCoord};
 }
 
 export default WeatherService;

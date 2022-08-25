@@ -1,3 +1,5 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import './app.scss';
 
 import CitySearch from "../citySearch/CitySearch";
@@ -5,10 +7,12 @@ import CityWeather from "../cityWeather/CityWeather";
 
 export default function App() {
 	return (
-		<>
-			{/*<CitySearch />*/}
-			<CityWeather />
-		</>
+		<Router>
+			<Routes>
+				<Route path='/' element={<CitySearch />} />
+				<Route path='/result' element={<CityWeather />} />
+			</Routes>
+		</Router>
 	)
 }
 

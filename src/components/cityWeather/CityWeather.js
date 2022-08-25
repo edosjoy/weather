@@ -1,9 +1,16 @@
+import { Link } from "react-router-dom";
+
 import './cityWeather.scss';
 
-import weatherImage from '../../resources/images/sunny.svg'
-import locationIcon from '../../resources/icons/location.svg'
-import thermometerIcon from '../../resources/icons/thermometer.svg'
-import humidityIcon from '../../resources/icons/humidity.svg'
+import weatherSunnyImage from '../../resources/images/sunny.svg';
+import weatherCloudyImage from '../../resources/images/cloudy.svg';
+import weatherMushroomRainImage from '../../resources/images/mushroomRain.svg';
+import weatherRainyImage from '../../resources/images/rainy.svg';
+import weatherSnowImage from '../../resources/images/snow.svg';
+import locationIcon from '../../resources/icons/location.svg';
+import thermometerIcon from '../../resources/icons/thermometer.svg';
+import humidityIcon from '../../resources/icons/humidity.svg';
+import arrayIcon from '../../resources/icons/arrow.svg';
 
 const CityWeather = () => {
 	return (
@@ -15,7 +22,7 @@ const CityWeather = () => {
 						<img src={locationIcon} alt=""/>
 						Lagos</div>
 					<div className="result-block__image-weather">
-						<img src={weatherImage} alt=""/>
+						<img src={weatherSunnyImage} alt=""/>
 					</div>
 					<div className="result-block__description">Shower rain</div>
 					<div className="result-block__temperature">31 C</div>
@@ -39,6 +46,9 @@ const CityWeather = () => {
 							</div>
 						</div>
 					</div>
+					<Link to='/' className="arrow">
+						<img src={arrayIcon} alt=""/>
+					</Link>
 				</div>
 			</div>
 		</section>

@@ -6,6 +6,7 @@
   border-radius: 12px;
   box-shadow: 0 20px 20px rgba(130, 108, 127, 0.25);
   padding: 35px 0 0 0;
+  position: relative;
 
   &__heading {
     font-family: 'Blinker', sans-serif;
@@ -90,5 +91,15 @@
 
   &__data-temperature {
     border-right: 1px solid #d1c7cf;
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 38px;
+  left: 33px;
+
+  &:hover {
+    cursor: pointer;
   }
 }

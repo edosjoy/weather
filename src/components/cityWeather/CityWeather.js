@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import './cityWeather.scss';
 
 import weatherSunnyImage from '../../resources/images/sunny.svg';
@@ -12,7 +10,27 @@ import thermometerIcon from '../../resources/icons/thermometer.svg';
 import humidityIcon from '../../resources/icons/humidity.svg';
 import arrayIcon from '../../resources/icons/arrow.svg';
 
-const CityWeather = () => {
+const CityWeather = ({weather, resetPage}) => {
+	const {name, image, description, temperature, feelsLikeTemperature, humidity} = weather;
+
+	let currentImage
+	switch (image) {
+		case 'Clouds':
+			currentImage = weatherCloudyImage;
+			break;
+		case 'Rain':
+			currentImage = weatherRainyImage;
+			break;
+		case 'Snow':
+			currentImage = weatherSnowImage;
+			break;
+		case 'Clear':
+			currentImage = weatherSunnyImage;
+			break;
+		default:
+			currentImage = weatherCloudyImage;
+	}
+
 	return (
 		<section className="city-weather">
 			<div className="city-weather__container">
@@ -20,20 +38,20 @@ const CityWeather = () => {
 					<div className="result-block__heading">Weather App</div>
 					<div className="result-block__city">
 						<img src={locationIcon} alt=""/>
-						Lagos</div>
+						{name}</div>
 					<div className="result-block__image-weather">
-						<img src={weatherSunnyImage} alt=""/>
+						<img src={currentImage} alt=""/>
 					</div>
-					<div className="result-block__description">Shower rain</div>
-					<div className="result-block__temperature">31 C</div>
+					<div className="result-block__description">{description}</div>
+					<div className="result-block__temperature">{temperature} C</div>
 					<div className="result-block__result-data result-data">
 						<div className="result-data__data-temperature">
 							<div className="result-data__icon-temperature">
 								<img src={thermometerIcon} alt=""/>
 							</div>
 							<div className="result-data__temperature">
-								<div className="result-data__temperature-like">23 C</div>
-								<div className="result-data__temperature-description">Feels like</div>
+								<div className="result-data__temperature-like">{feelsLikeTemperature} C</div>
+								<div className="result-data__temperature-description">Ощущается</div>
 							</div>
 						</div>
 						<div className="result-data__data-humidity">
@@ -41,14 +59,14 @@ const CityWeather = () => {
 								<img src={humidityIcon} alt=""/>
 							</div>
 							<div className="result-data__humidity">
-								<div className="result-data__humidity-data">93%</div>
-								<div className="result-data__humidity-heading">Humidity</div>
+								<div className="result-data__humidity-data">{humidity}%</div>
+								<div className="result-data__humidity-heading">Влажность</div>
 							</div>
 						</div>
 					</div>
-					<Link to='/' className="arrow">
+					<div className="arrow" onClick={resetPage}>
 						<img src={arrayIcon} alt=""/>
-					</Link>
+					</div>
 				</div>
 			</div>
 		</section>

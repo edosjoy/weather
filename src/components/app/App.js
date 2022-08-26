@@ -9,11 +9,13 @@ export default function App() {
 	const [weather, setWeather] = useState({});
 	const [page, setPage] = useState('citySearch');
 
+	// Обновление данных о погоде
 	const updateWeatherState = (data) => {
 		setWeather(data);
 		setPage('cityWeather');
 	}
 
+	// Сбрасываем страницу на дефолтную для возврата к поиску
 	const resetPage = () => {
 		setPage('citySearch');
 	}

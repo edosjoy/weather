@@ -13,13 +13,15 @@ import humidityIcon from '../../resources/icons/humidity.svg';
 import arrayIcon from '../../resources/icons/arrow.svg';
 
 const CityWeather = ({weather, resetPage}) => {
+
+	// Отслеживаем нажатие Backspace для возврата к форме поиска
 	useEffect(() => {
 		window.addEventListener('keydown', backMainPage);
 
 		return () => {
 			window.removeEventListener('keydown', backMainPage);
 		}
-	});
+	}, []);
 
 	const backMainPage = (event) => {
 		if (event.key === 'Backspace') {
@@ -27,9 +29,11 @@ const CityWeather = ({weather, resetPage}) => {
 		}
 	}
 
+	// Вытаскиваем все необходимые параметры
 	const {name, image, description, temperature, feelsLikeTemperature, humidity} = weather;
 
-	let currentImage
+	// Определяем по данным из ответа какую картинку отображать
+	let currentImage;
 	switch (image) {
 		case 'Clouds':
 			currentImage = weatherCloudyImage;

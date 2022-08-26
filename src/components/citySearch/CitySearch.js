@@ -13,14 +13,17 @@ const CitySearch = ({updateWeatherState}) => {
 	const [loading, setLoading] = useState(false);
 	const [errorMessage, setErrorMessage] = useState(false);
 
+	// Сервисы для получения погоды по названию города и по координатам
 	const {getWeatherCity, getWeatherCoord} = WeatherService();
 
+	// Получаем погоду по названию города
 	const getWeatherUserCity = async () => {
 		setLoading(true);
 		setErrorMessage(false);
 		await getWeatherCity(cityName).then(currentData).catch(() => setErrorMessage(true));
 	}
 
+	// Вытаскиваем необходимые данные из ответа с погодой и передаем в компонент App
 	const currentData = (data) => {
 		const newData = {
 			name: data.name,
@@ -34,6 +37,7 @@ const CitySearch = ({updateWeatherState}) => {
 		updateWeatherState(newData);
 	}
 
+	// Отправка запроса по нажатию Enter
 	const onInputKeyDown = (event) => {
 		if (event.key === 'Enter') {
 			setCityName(event.target.value);
@@ -41,6 +45,7 @@ const CitySearch = ({updateWeatherState}) => {
 		}
 	}
 
+	// Определение координат клиента и запрос погоды по этим координатам
 	const getPositionBrowser = async () => {
 		setLoading(true);
 		setErrorMessage(false);
@@ -57,6 +62,7 @@ const CitySearch = ({updateWeatherState}) => {
 		navigator.geolocation.getCurrentPosition(success, error);
 	}
 
+	// Определяем текущий процесс
 	const isLoading = loading ? <Loading /> : null;
 	const isError = errorMessage ? <ErrorMessage /> : null;
 

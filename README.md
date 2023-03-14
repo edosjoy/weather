@@ -1,6 +1,6 @@
 # Weather
 
-Отбражение текущей погоды https://edosjoy.github.io/weather/
+Deploy: https://edosjoy.github.io/weather/
 
 #### Требования к задаче
 * Приложение реализовать на React
